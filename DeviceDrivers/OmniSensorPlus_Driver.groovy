@@ -83,6 +83,7 @@ metadata {
         attribute "TotalOn", "number"
         attribute "TotalOff", "number"
         attribute "OnList", "string"
+        attribute "OnListTable", "string"
         attribute "OnThreshold", "number"
         attribute "switch", "enum", ["on", "off"]
         //Power attributes

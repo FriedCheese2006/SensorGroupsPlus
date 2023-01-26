@@ -128,13 +128,20 @@ def getCurrentCount() {
         onList.add("None")
     }
 	onList = onList.sort()
+    String onListTable = "<style>td{text-align:center}</style><table id='onTable'>"
+	onList.each {it ->
+	onListTable += "<tr><td>${it}</td></tr>"
+	}
+	onListTable += "</table>"
+	
 	onList = groovy.json.JsonOutput.toJson(onList)
 	state.onList = onList
     logDebug "There are ${totalOff} sensors off"
     logDebug "There are ${totalOn} sensors on"
     device.sendEvent(name: "TotalOff", value: totalOff)
     device.sendEvent(name: "TotalOn", value: totalOn)
-	device.sendEvent(name: "OnList", value: state.onList)
+    device.sendEvent(name: "OnList", value: state.onList)
+    device.sendEvent(name: "OnListTable", value: onListTable)
 }
 
 def logDebug(msg) {
